@@ -93,3 +93,29 @@ C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Ba
 C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\obj\Debug\ReVita.csproj.Up2Date
 C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\obj\Debug\ReVita.exe
 C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\obj\Debug\ReVita.pdb
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\bin\Debug\ReVita.exe.config
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\bin\Debug\ReVita.exe
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\bin\Debug\ReVita.pdb
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\bin\Debug\itextsharp.dll
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\bin\Debug\itextsharp.xml
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReVita.csproj.AssemblyReference.cache
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReVita.exe.config
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReVita.Form1.resources
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReVita.frmEmpleados.resources
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReVita.frmHorario.resources
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReVita.frmInterino.resources
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReVita.frmMedicos.resources
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReVita.frmPacientes.resources
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReVita.frmPersonal.resources
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReVita.frmSustitucion.resources
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReVita.frmSustituto.resources
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReVita.frmTitular.resources
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReVita.frmVacaciones.resources
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReVita.Properties.Resources.resources
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReVita.csproj.GenerateResource.cache
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReVita.csproj.CoreCompileInputs.cache
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReVita.csproj.Up2Date
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReVita.exe
+C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReVita.pdb
