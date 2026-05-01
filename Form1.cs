@@ -55,47 +55,43 @@ namespace ReVita
         // ════════════════════════════════════════════════════════════════════════════
         //  METADATOS — describen cada tabla de la BDD
         // ════════════════════════════════════════════════════════════════════════════
-        private readonly Dictionary<string, string[]> tablasCampos =
-            new Dictionary<string, string[]>
-            {
-                { "Personal",          new[] { "ID_Personal",    "Nombre",    "Direccion",
-                                                "Telefono", "Poblacion", "Provincia", "Codigo_Postal", "NSS" } },
+        private readonly Dictionary<string, string[]> tablasCampos = new Dictionary<string, string[]>
+{
+    { "Personal",    new[] { "ID_Personal", "Nombre", "Direccion", "Telefono", "Poblacion", "Provincia", "Codigo_Postal", "NSS" } },
+    { "Vacaciones",  new[] { "ID_Vacaciones", "Fecha_Inicio", "Fecha_Fin", "Estado", "Personal_ID_Personal" } },
+    { "Empleado",    new[] { "ID_Empleado", "Turno", "Tipo_Empleado", "Personal_ID_Personal" } },
+    { "Medico",      new[] { "ID_Medico", "Cedula", "Personal_ID_Personal" } },
+    { "Titular",     new[] { "Medico_ID_Medico", "Consultorio_Principal" } },
+    { "Interino",    new[] { "Medico_ID_Medico", "Fecha_FinContrato" } },
+    { "Sustituto",   new[] { "Medico_ID_Medico" } },
+    { "Sustitucion", new[] { "ID_Sustitucion", "Fecha_Alta", "Fecha_Baja", "Sustituto_Medico_ID_Medico" } },
+    { "Horario",     new[] { "ID_Horario", "Dia_Semana", "Hora_Inicio", "Hora_Fin", "Medico_ID_Medico" } },
+    { "Paciente",    new[] { "ID_Paciente", "Nombre_Pac", "Direccion_Pac", "Telefono_Pac", "CodigoP_Pac", "NSS_Pac", "Medico_ID_Medico" } }
+};
 
-                { "Vacaciones",        new[] { "ID_Vacaciones",    "Tipo_Vacaciones",    "Fecha_Inicio", "Fecha_Fin"} },
-                { "Empleados",         new[] { "ID_Personal", "ID_Empleado",    "Tipo_Empleado" } },
-                { "Medicos",           new[] { "ID_Personal", "ID_Medico",       "Cedula" } },
-                { "Titular",           new[] { "ID_Medico", "ID_Titular", "Consultorio_Principal" } },
-                { "Interino",          new[] { "ID_Medico", "ID_Interino", "Fecha_FinContrato" } },
-                { "Sustituto",         new[] { "ID_Medico", "ID_Sustituto" } },
-                { "Sustitucion",       new[] { "ID_Sustituto" , "ID_Sustitucion",  "Fecha_Alta",    "Fecha_Baja" } },
-                { "Horario_Medico",    new[] { "ID_Medico", "ID_Horario", "Dia_Semana",    "Hora_Inicio",    "Hora_Fin" } },
-                { "Pacientes",         new[] { "ID_Paciente",    "Nombre_Pac",    "Direccion_Pac",
-                                                "Telefono_Pac", "CP", "NSS", "ID_Medico"  } },
-            };
-
-        private readonly Dictionary<string, string> tablasPK =
-            new Dictionary<string, string>
-            {
-                { "Personal",             "ID_Personal"     },
-                { "Vacaciones",           "ID_Vacaciones"   },
-                { "Empleados",            "ID_Empleado"     },
-                { "Medicos",              "ID_Medico"       },
-                { "Titular",              "ID_Titular"      },
-                { "Interino",             "ID_Interino"     },
-                { "Sustituto",            "ID_Sustituto"    },
-                { "Sustitucion",          "ID_Sustitucion"  }
-            };
+        private readonly Dictionary<string, string> tablasPK = new Dictionary<string, string>
+{
+    { "Personal",    "ID_Personal" },
+    { "Vacaciones",  "ID_Vacaciones" },
+    { "Empleado",    "ID_Empleado" },
+    { "Medico",      "ID_Medico" },
+    { "Titular",     "Medico_ID_Medico" },
+    { "Interino",    "Medico_ID_Medico" },
+    { "Sustituto",   "Medico_ID_Medico" },
+    { "Sustitucion", "ID_Sustitucion" },
+    { "Horario",     "ID_Horario" },
+    { "Paciente",    "ID_Paciente" }
+};
 
         // El valor de esta tabla se muestra en el ComboBox de selección cuando un campo es FK
-        public readonly Dictionary<string, string> tablasDisplayCol =
-             new Dictionary<string, string>
-             {
-                { "Personal",       "Nombre"        },  
-                { "Medicos",        "Cedula"         },  
-                { "Empleados",      "Tipo_Empleado"  },  
-                { "Sustituto",      "ID_Medico"      }, 
-                { "Pacientes",      "Nombre_Pac"     },  
-             };
+        public readonly Dictionary<string, string> tablasDisplayCol = new Dictionary<string, string>
+{
+    { "Personal",    "Nombre" },
+    { "Medico",      "Cedula" },
+    { "Empleado",    "Tipo_Empleado" },
+    { "Sustituto",   "Medico_ID_Medico" },
+    { "Paciente",    "Nombre_Pac" },
+};
 
         private readonly Dictionary<string, byte[]> fotoBytesPorTabla = new Dictionary<string, byte[]>();
 
@@ -107,32 +103,23 @@ namespace ReVita
         private TipoCampo InferirTipoCampo(string campo, string nombreTabla)
         {
             if (campo == "Dia_Semana") return TipoCampo.DiaSemana;
-            if (campo.IndexOf("Fecha", StringComparison.OrdinalIgnoreCase) >= 0) return TipoCampo.Fecha;
-            if (campo == "Tipo_Vacaciones") return TipoCampo.TipoVacaciones;
+            if (campo.Contains("Fecha")) return TipoCampo.Fecha;
+            if (campo == "Hora_Inicio" || campo == "Hora_Fin") return TipoCampo.Hora;
+            if (campo == "Estado") return TipoCampo.TipoVacaciones;
             if (campo == "Tipo_Empleado") return TipoCampo.TipoEmpleado;
-            if (!campo.StartsWith("ID_", StringComparison.OrdinalIgnoreCase) &&
-                 campo.IndexOf("Hora", StringComparison.OrdinalIgnoreCase) >= 0)
-                return TipoCampo.Hora;
 
-            if (campo.StartsWith("ID_", StringComparison.OrdinalIgnoreCase))
-            {
-                string sufijoID = campo.Substring(3).ToUpperInvariant();
-                string segmento = nombreTabla.Split('_')[0].ToUpperInvariant();
-                return segmento.StartsWith(sufijoID) ? TipoCampo.Texto : TipoCampo.ID;
-            }
+            // Detectar Llaves Foráneas exactas para generar ComboBox
+            if (campo == "Personal_ID_Personal" || campo == "Medico_ID_Medico" || campo == "Sustituto_Medico_ID_Medico")
+                return TipoCampo.ID;
+
             return TipoCampo.Texto;
-            
         }
 
         private string TablaOrigenDeFK(string campoFK)
         {
-            if (!campoFK.StartsWith("ID_", StringComparison.OrdinalIgnoreCase)) return null;
-            string sufijoID = campoFK.Substring(3).ToUpperInvariant();
-            foreach (var t in tablasCampos.Keys)
-            {
-                string seg = t.Split('_')[0].ToUpperInvariant();
-                if (seg.StartsWith(sufijoID)) return t;
-            }
+            if (campoFK == "Personal_ID_Personal") return "Personal";
+            if (campoFK == "Medico_ID_Medico") return "Medico";
+            if (campoFK == "Sustituto_Medico_ID_Medico") return "Sustituto";
             return null;
         }
 
@@ -270,8 +257,8 @@ namespace ReVita
         {
             string[] tablasBDD =
             {
-                "Personal", "Vacaciones", "Empleados", "Medicos", "Titular",
-                "Interino", "Sustituto", "Sustitucion", "Horario Medico", "Pacientes"
+                "Personal", "Vacaciones", "Empleado", "Medico", "Titular",
+                "Interino", "Sustituto", "Sustitucion", "Horario", "Paciente"
             };
 
             foreach (string nombreTabla in tablasBDD)
@@ -296,14 +283,14 @@ namespace ReVita
             {
                 case "Personal": AbrirFormModulo(new frmPersonal(this)); break;
                 case "Vacaciones": AbrirFormModulo(new frmVacaciones(this)); break;
-                case "Empleados": AbrirFormModulo(new frmEmpleados(this)); break;
-                case "Medicos": AbrirFormModulo(new frmMedicos(this)); break;
+                case "Empleado": AbrirFormModulo(new frmEmpleados(this)); break;
+                case "Medico": AbrirFormModulo(new frmMedicos(this)); break;
                 case "Titular": AbrirFormModulo(new frmTitular(this)); break;
                 case "Interino": AbrirFormModulo(new frmInterino(this)); break;
                 case "Sustituto": AbrirFormModulo(new frmSustituto(this)); break;
                 case "Sustitucion": AbrirFormModulo(new frmSustitucion(this)); break;
-                case "Horario Medico": AbrirFormModulo(new frmHorario(this)); break;
-                case "Pacientes": AbrirFormModulo(new frmPacientes(this)); break;
+                case "Horario": AbrirFormModulo(new frmHorario(this)); break;
+                case "Paciente": AbrirFormModulo(new frmPacientes(this)); break;
             }
         }
 
@@ -918,7 +905,7 @@ namespace ReVita
                 case TipoCampo.TipoEmpleado: prefijo = "cmb"; break;
                 case TipoCampo.TipoVacaciones: prefijo = "cmb"; break;
                 case TipoCampo.Fecha:
-                case TipoCampo.Hora:
+                case TipoCampo.Hora: prefijo = "dtp"; break;
                 default: prefijo = "txt"; break;
             }
             return FormModulo.Controls.Find(prefijo + campo, true).FirstOrDefault();

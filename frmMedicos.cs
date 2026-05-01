@@ -8,14 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ReVita
 {
     public partial class frmMedicos : Form
     {
+        // Nombre exacto de la tabla en la BDD y en tablasCampos de Form1
+        private const string TABLA = "Medico";
+
         Form1 FormularioPrincipal;
-        SqlConnection Conexion = new SqlConnection(); 
+        SqlConnection Conexion;
+
         public frmMedicos(Form1 Formulario)
         {
             InitializeComponent();
@@ -25,8 +28,11 @@ namespace ReVita
 
         private void FormDoctores_Load(object sender, EventArgs e)
         {
+            // Tag requerido para que Grid_CellClick_Generico ubique este form
+            this.Tag = TABLA;
+
             var (btnInsertar, btnEliminar, btnActualizar, btnConsulta, btnLimpiar) =
-                FormularioPrincipal.InicializarModulo(this, "Medicos");
+                FormularioPrincipal.InicializarModulo(this, TABLA);
 
             btnInsertar.Click += BtnInsertar_Click;
             btnEliminar.Click += BtnEliminar_Click;
@@ -35,125 +41,141 @@ namespace ReVita
             btnLimpiar.Click += BtnLimpiar_Click;
         }
 
-        private (object IDPersonal, object IDMedico, object Cedula) LeerValorCampo()
+        // Columnas: ID_Medico (IDENTITY), Cedula, Personal_ID_Personal (FK)
+        private (object IDMedico, object Cedula, object PersonalID) LeerCampos()
         {
             return (
-                FormularioPrincipal.LeerValorCampo(this, "ID_Personal", "Medicos", FormularioPrincipal.ObtenerTipo("ID_Personal", "Medicos")),
-                FormularioPrincipal.LeerValorCampo(this, "ID_Medico", "Medicos", FormularioPrincipal.ObtenerTipo("ID_Medico", "Medicos")),
-                FormularioPrincipal.LeerValorCampo(this, "Cedula", "Medicos", FormularioPrincipal.ObtenerTipo("Cedula", "Medicos"))
+                FormularioPrincipal.LeerValorCampo(this, "ID_Medico", TABLA, FormularioPrincipal.ObtenerTipo("ID_Medico", TABLA)),
+                FormularioPrincipal.LeerValorCampo(this, "Cedula", TABLA, FormularioPrincipal.ObtenerTipo("Cedula", TABLA)),
+                FormularioPrincipal.LeerValorCampo(this, "Personal_ID_Personal", TABLA, FormularioPrincipal.ObtenerTipo("Personal_ID_Personal", TABLA))
             );
         }
 
+        // ── INSERTAR ──────────────────────────────────────────────────────────
         private void BtnInsertar_Click(object sender, EventArgs e)
         {
-            var (IDPersonal, IDMedico, Cedula) = LeerValorCampo();
+            var (_, Cedula, PersonalID) = LeerCampos();
 
-            if (IDPersonal == null || Cedula == null)
+            if (Cedula == DBNull.Value || Cedula == null ||
+                PersonalID == DBNull.Value || PersonalID == null)
             {
-                MessageBox.Show("Complete todos los campos para continuar");
+                MessageBox.Show("Cédula y Personal son obligatorios.", "Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            else
+
+            // ID_Medico es IDENTITY → no se incluye
+            string sql = @"INSERT INTO Medico (Cedula, Personal_ID_Personal)
+                           VALUES (@Cedula, @Personal_ID_Personal)";
+            try
             {
-                string Agregar = $"INSERT INTO Medicos (ID_Personal, ID_Medico, Cedula) VALUES (@ID_Personal, @ID_Medico, @Cedula)";
-                SqlCommand Comando = new SqlCommand(Agregar, Conexion);
-
-                Comando.Parameters.AddWithValue("@ID_Personal", IDPersonal);
-                Comando.Parameters.AddWithValue("@ID_Medico", IDMedico);
-                Comando.Parameters.AddWithValue("@Cedula", Cedula);
-
-                try
+                using (SqlCommand cmd = new SqlCommand(sql, Conexion))
                 {
+                    cmd.Parameters.AddWithValue("@Cedula", Cedula);
+                    cmd.Parameters.AddWithValue("@Personal_ID_Personal", PersonalID);
                     if (Conexion.State != ConnectionState.Open) Conexion.Open();
+                    cmd.ExecuteNonQuery();
+                }
 
-                    Comando.ExecuteNonQuery();
-                    FormularioPrincipal.CargarDatos("Medicos", this);
-                    MessageBox.Show("Registro insertado correctamente");
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show($"Error al insertar: {ex.Message}");
-                }
-                finally
-                {
-                    if (Conexion.State == ConnectionState.Open) Conexion.Close();
-                }
+                FormularioPrincipal.CargarDatos(TABLA, this);
+                FormularioPrincipal.LimpiarCampos(TABLA, this);
+                MessageBox.Show("Médico registrado correctamente.", "Éxito",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
+            catch (SqlException ex) { FormularioPrincipal.MostrarError("insertar Médico", ex); }
+            finally { if (Conexion.State == ConnectionState.Open) Conexion.Close(); }
         }
 
+        // ── ELIMINAR ──────────────────────────────────────────────────────────
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            var (_, IDMedico, _) = LeerValorCampo();
+            var (IDMedico, _, _) = LeerCampos();
 
-            string Eliminar = $"DELETE FROM Medicos WHERE ID_Medico = @ID_Medico";
-            SqlCommand Comando = new SqlCommand(Eliminar, Conexion);
+            if (IDMedico == DBNull.Value || IDMedico == null)
+            {
+                MessageBox.Show("Seleccione un médico del grid para eliminar.", "Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            Comando.Parameters.AddWithValue("@ID_Medico", IDMedico);
+            if (MessageBox.Show($"¿Eliminar el Médico con ID {IDMedico}?", "Confirmar",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                return;
 
             try
             {
-                if (Conexion.State != ConnectionState.Open) Conexion.Open();
+                using (SqlCommand cmd = new SqlCommand(
+                    "DELETE FROM Medico WHERE ID_Medico = @ID_Medico", Conexion))
+                {
+                    cmd.Parameters.AddWithValue("@ID_Medico", IDMedico);
+                    if (Conexion.State != ConnectionState.Open) Conexion.Open();
+                    cmd.ExecuteNonQuery();
+                }
 
-                Comando.ExecuteNonQuery();
-                FormularioPrincipal.CargarDatos("Medicos", this);
-                MessageBox.Show("Registro elimnado correctamente");
+                FormularioPrincipal.CargarDatos(TABLA, this);
+                FormularioPrincipal.LimpiarCampos(TABLA, this);
+                MessageBox.Show("Médico eliminado correctamente.", "Éxito",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show($"Error al eliminar: {ex.Message}");
-            }
-            finally
-            {
-                if (Conexion.State == ConnectionState.Open) Conexion.Close();
-            }
-
+            catch (SqlException ex) { FormularioPrincipal.MostrarError("eliminar Médico", ex); }
+            finally { if (Conexion.State == ConnectionState.Open) Conexion.Close(); }
         }
 
+        // ── ACTUALIZAR ────────────────────────────────────────────────────────
         private void BtnActualizar_Click(object sender, EventArgs e)
         {
-            var (IDPersonal, IDMedico, Cedula) = LeerValorCampo();
+            var (IDMedico, Cedula, PersonalID) = LeerCampos();
 
-            if (IDPersonal == null || Cedula == null)
+            if (IDMedico == DBNull.Value || IDMedico == null)
             {
-                MessageBox.Show("Complete todos los campos para continuar");
+                MessageBox.Show("Seleccione un médico del grid para actualizar.", "Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            else
+            if (Cedula == DBNull.Value || Cedula == null ||
+                PersonalID == DBNull.Value || PersonalID == null)
             {
-                string Agregar = $"UPDATE Medicos SET ID_Personal = @ID";
-                SqlCommand Comando = new SqlCommand(Agregar, Conexion);
-
-                Comando.Parameters.AddWithValue("@ID_Personal", IDPersonal);
-                Comando.Parameters.AddWithValue("@ID_Medico", IDMedico);
-                Comando.Parameters.AddWithValue("@Cedula", Cedula);
-
-                try
-                {
-                    if (Conexion.State != ConnectionState.Open) Conexion.Open();
-
-                    Comando.ExecuteNonQuery();
-                    FormularioPrincipal.CargarDatos("Medicos", this);
-                    MessageBox.Show("Registro insertado correctamente");
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show($"Error al insertar: {ex.Message}");
-                }
-                finally
-                {
-                    if (Conexion.State == ConnectionState.Open) Conexion.Close();
-                }
+                MessageBox.Show("Cédula y Personal son obligatorios.", "Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
+            string sql = @"UPDATE Medico
+                           SET Cedula               = @Cedula,
+                               Personal_ID_Personal = @Personal_ID_Personal
+                           WHERE ID_Medico = @ID_Medico";
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, Conexion))
+                {
+                    cmd.Parameters.AddWithValue("@ID_Medico", IDMedico);
+                    cmd.Parameters.AddWithValue("@Cedula", Cedula);
+                    cmd.Parameters.AddWithValue("@Personal_ID_Personal", PersonalID);
+                    if (Conexion.State != ConnectionState.Open) Conexion.Open();
+                    cmd.ExecuteNonQuery();
+                }
+
+                FormularioPrincipal.CargarDatos(TABLA, this);
+                MessageBox.Show("Médico actualizado correctamente.", "Éxito",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (SqlException ex) { FormularioPrincipal.MostrarError("actualizar Médico", ex); }
+            finally { if (Conexion.State == ConnectionState.Open) Conexion.Close(); }
         }
 
+        // ── CONSULTA / FILTRAR ────────────────────────────────────────────────
         private void BtnConsulta_Click(object sender, EventArgs e)
         {
         }
 
+        // ── LIMPIAR ───────────────────────────────────────────────────────────
         private void BtnLimpiar_Click(object sender, EventArgs e)
         {
+            FormularioPrincipal.LimpiarCampos(TABLA, this);
+            var dgv = this.Controls.Find("dgv" + TABLA, true).FirstOrDefault() as DataGridView;
+            if (dgv?.DataSource is DataTable dt) dt.DefaultView.RowFilter = "";
         }
+
+        
     }
 }
