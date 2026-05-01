@@ -1,0 +1,95 @@
+D:\topicos\ReVita\ReVita\bin\Debug\ReVita.exe.config
+D:\topicos\ReVita\ReVita\bin\Debug\ReVita.exe
+D:\topicos\ReVita\ReVita\bin\Debug\ReVita.pdb
+D:\topicos\ReVita\ReVita\obj\Debug\ReVita.csproj.AssemblyReference.cache
+D:\topicos\ReVita\ReVita\obj\Debug\ReVita.frmInicio.resources
+D:\topicos\ReVita\ReVita\obj\Debug\ReVita.Properties.Resources.resources
+D:\topicos\ReVita\ReVita\obj\Debug\ReVita.csproj.GenerateResource.cache
+D:\topicos\ReVita\ReVita\obj\Debug\ReVita.csproj.CoreCompileInputs.cache
+D:\topicos\ReVita\ReVita\obj\Debug\ReVita.exe
+D:\topicos\ReVita\ReVita\obj\Debug\ReVita.pdb
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Tópicos avanzados de programación\Unidad 2\Práctica 2\Programa\ReVitaGIT-main\ReVita\obj\Debug\ReVita.csproj.AssemblyReference.cache
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Tópicos avanzados de programación\Unidad 2\Práctica 2\Programa\ReVitaGIT-main\ReVita\obj\Debug\ReVita.exe.config
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Tópicos avanzados de programación\Unidad 2\Práctica 2\Programa\ReVitaGIT-main\ReVita\obj\Debug\ReVita.exe
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Tópicos avanzados de programación\Unidad 2\Práctica 2\Programa\ReVitaGIT-main\ReVita\obj\Debug\ReVita.pdb
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Tópicos avanzados de programación\Unidad 2\Práctica 2\Programa\ReVitaGIT-main\ReVita\bin\Debug\ReVita.exe.config
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Tópicos avanzados de programación\Unidad 2\Práctica 2\Programa\ReVitaGIT-main\ReVita\bin\Debug\ReVita.exe
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Tópicos avanzados de programación\Unidad 2\Práctica 2\Programa\ReVitaGIT-main\ReVita\bin\Debug\ReVita.pdb
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Tópicos avanzados de programación\Unidad 2\Práctica 2\Programa\ReVitaGIT-main\ReVita\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Tópicos avanzados de programación\Unidad 2\Práctica 2\Programa\ReVitaGIT-main\ReVita\bin\Debug\itextsharp.dll
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Tópicos avanzados de programación\Unidad 2\Práctica 2\Programa\ReVitaGIT-main\ReVita\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Tópicos avanzados de programación\Unidad 2\Práctica 2\Programa\ReVitaGIT-main\ReVita\bin\Debug\itextsharp.xml
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Tópicos avanzados de programación\Unidad 2\Práctica 2\Programa\ReVitaGIT-main\ReVita\obj\Debug\ReVita.frmInicio.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Tópicos avanzados de programación\Unidad 2\Práctica 2\Programa\ReVitaGIT-main\ReVita\obj\Debug\ReVita.Properties.Resources.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Tópicos avanzados de programación\Unidad 2\Práctica 2\Programa\ReVitaGIT-main\ReVita\obj\Debug\ReVita.csproj.GenerateResource.cache
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Tópicos avanzados de programación\Unidad 2\Práctica 2\Programa\ReVitaGIT-main\ReVita\obj\Debug\ReVita.csproj.CoreCompileInputs.cache
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Tópicos avanzados de programación\Unidad 2\Práctica 2\Programa\ReVitaGIT-main\ReVita\obj\Debug\ReVita.csproj.Up2Date
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\bin\Debug\ReVita.exe.config
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\bin\Debug\ReVita.exe
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\bin\Debug\ReVita.pdb
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\bin\Debug\itextsharp.dll
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\bin\Debug\itextsharp.xml
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\obj\Debug\ReVita.csproj.AssemblyReference.cache
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\obj\Debug\ReVita.exe.config
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\obj\Debug\ReVita.FormDoctores.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\obj\Debug\ReVita.Properties.Resources.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\obj\Debug\ReVita.csproj.GenerateResource.cache
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\obj\Debug\ReVita.csproj.CoreCompileInputs.cache
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\obj\Debug\ReVita.csproj.Up2Date
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\obj\Debug\ReVita.exe
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\obj\Debug\ReVita.pdb
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\obj\Debug\ReVita.Form1.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\bin\Debug\ReVita.exe.config
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\bin\Debug\ReVita.exe
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\bin\Debug\ReVita.pdb
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\bin\Debug\itextsharp.dll
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\bin\Debug\itextsharp.xml
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\obj\Debug\ReVita.csproj.AssemblyReference.cache
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\obj\Debug\ReVita.exe.config
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\obj\Debug\ReVita.Form1.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\obj\Debug\ReVita.Properties.Resources.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\obj\Debug\ReVita.csproj.GenerateResource.cache
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\obj\Debug\ReVita.csproj.CoreCompileInputs.cache
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\obj\Debug\ReVita.csproj.Up2Date
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\obj\Debug\ReVita.exe
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\obj\Debug\ReVita.pdb
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\obj\Debug\ReVita.frmMedicos.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\obj\Debug\ReVita.frmEmpleados.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\obj\Debug\ReVita.frmHorario.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\obj\Debug\ReVita.frmInterino.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\obj\Debug\ReVita.frmPacientes.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\obj\Debug\ReVita.frmPersonal.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\obj\Debug\ReVita.frmSustitucion.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\obj\Debug\ReVita.frmSustituto.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\obj\Debug\ReVita.frmTitular.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVitaGIT-main\ReVita\ReVita\obj\Debug\ReVita.frmVacaciones.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\bin\Debug\ReVita.exe.config
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\bin\Debug\ReVita.exe
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\bin\Debug\ReVita.pdb
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\bin\Debug\itextsharp.dll
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\bin\Debug\itextsharp.xml
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\obj\Debug\ReVita.csproj.AssemblyReference.cache
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\obj\Debug\ReVita.exe.config
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\obj\Debug\ReVita.Form1.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\obj\Debug\ReVita.frmEmpleados.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\obj\Debug\ReVita.frmHorario.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\obj\Debug\ReVita.frmInterino.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\obj\Debug\ReVita.frmMedicos.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\obj\Debug\ReVita.frmPacientes.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\obj\Debug\ReVita.frmPersonal.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\obj\Debug\ReVita.frmSustitucion.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\obj\Debug\ReVita.frmSustituto.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\obj\Debug\ReVita.frmTitular.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\obj\Debug\ReVita.frmVacaciones.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\obj\Debug\ReVita.Properties.Resources.resources
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\obj\Debug\ReVita.csproj.GenerateResource.cache
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\obj\Debug\ReVita.csproj.CoreCompileInputs.cache
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\obj\Debug\ReVita.csproj.Up2Date
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\obj\Debug\ReVita.exe
+C:\Users\hazel\OneDrive\Documentos\Universidad\Cuarto semestre\Fundamentos de Base de Datos\Unidad 6\Proyecto\ReVita\obj\Debug\ReVita.pdb
