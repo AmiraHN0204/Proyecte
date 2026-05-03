@@ -119,3 +119,28 @@ C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReV
 C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReVita.csproj.Up2Date
 C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReVita.exe
 C:\Users\valen\OneDrive\Documents\Fundamentos de base de datos\BDD\obj\Debug\ReVita.pdb
+C:\Users\romer\source\repos\Proyecte\bin\Debug\ReVita.exe.config
+C:\Users\romer\source\repos\Proyecte\bin\Debug\ReVita.exe
+C:\Users\romer\source\repos\Proyecte\bin\Debug\ReVita.pdb
+C:\Users\romer\source\repos\Proyecte\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\romer\source\repos\Proyecte\bin\Debug\itextsharp.dll
+C:\Users\romer\source\repos\Proyecte\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\romer\source\repos\Proyecte\bin\Debug\itextsharp.xml
+C:\Users\romer\source\repos\Proyecte\obj\Debug\ReVita.csproj.AssemblyReference.cache
+C:\Users\romer\source\repos\Proyecte\obj\Debug\ReVita.Form1.resources
+C:\Users\romer\source\repos\Proyecte\obj\Debug\ReVita.frmEmpleados.resources
+C:\Users\romer\source\repos\Proyecte\obj\Debug\ReVita.frmHorario.resources
+C:\Users\romer\source\repos\Proyecte\obj\Debug\ReVita.frmInterino.resources
+C:\Users\romer\source\repos\Proyecte\obj\Debug\ReVita.frmMedicos.resources
+C:\Users\romer\source\repos\Proyecte\obj\Debug\ReVita.frmPacientes.resources
+C:\Users\romer\source\repos\Proyecte\obj\Debug\ReVita.frmPersonal.resources
+C:\Users\romer\source\repos\Proyecte\obj\Debug\ReVita.frmSustitucion.resources
+C:\Users\romer\source\repos\Proyecte\obj\Debug\ReVita.frmSustituto.resources
+C:\Users\romer\source\repos\Proyecte\obj\Debug\ReVita.frmTitular.resources
+C:\Users\romer\source\repos\Proyecte\obj\Debug\ReVita.frmVacaciones.resources
+C:\Users\romer\source\repos\Proyecte\obj\Debug\ReVita.Properties.Resources.resources
+C:\Users\romer\source\repos\Proyecte\obj\Debug\ReVita.csproj.GenerateResource.cache
+C:\Users\romer\source\repos\Proyecte\obj\Debug\ReVita.csproj.CoreCompileInputs.cache
+C:\Users\romer\source\repos\Proyecte\obj\Debug\ReVita.csproj.Up2Date
+C:\Users\romer\source\repos\Proyecte\obj\Debug\ReVita.exe
+C:\Users\romer\source\repos\Proyecte\obj\Debug\ReVita.pdb
