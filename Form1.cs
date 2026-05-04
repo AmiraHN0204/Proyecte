@@ -17,6 +17,7 @@ namespace ReVita
     {
         Texto,      // TextBox
         ID,         // ComboBox (FK)
+        IDPrincipa, // TextBox (PK, solo lectura)
         Fecha,      // DateTimePicker fecha corta
         Hora,       // DateTimePicker con flechas (sin calendario)
         DiaSemana,  // ComboBox con días fijos
@@ -111,7 +112,8 @@ namespace ReVita
             // Detectar Llaves Foráneas exactas para generar ComboBox
             if (campo == "Personal_ID_Personal" || campo == "Medico_ID_Medico" || campo == "Sustituto_Medico_ID_Medico")
                 return TipoCampo.ID;
-
+            else if (tablasPK.TryGetValue(nombreTabla, out string pk) && campo == pk)
+                return TipoCampo.IDPrincipa;
             return TipoCampo.Texto;
         }
 
@@ -513,6 +515,21 @@ namespace ReVita
                             };
                             pnlScrollCampos.Controls.Add(cmb);
                             CargarComboFK(cmb, campo);
+                            yPos += 62;
+                            break;
+                        }
+                    case TipoCampo.IDPrincipa:
+                        {
+                            var txt = new TextBox
+                            {
+                                Name = "txt" + campo,
+                                Font = fntInput,
+                                Width = 250,
+                                Location = new Point(20, yPos + 20),
+                                BackColor = Color.LightGray,
+                                ReadOnly = true
+                            };
+                            pnlScrollCampos.Controls.Add(txt);
                             yPos += 62;
                             break;
                         }
