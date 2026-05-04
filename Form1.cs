@@ -527,7 +527,7 @@ namespace ReVita
                                 Width = 250,
                                 Location = new Point(20, yPos + 20),
                                 BackColor = Color.LightGray,
-                                ReadOnly = true
+                                Enabled = false
                             };
                             pnlScrollCampos.Controls.Add(txt);
                             yPos += 62;
