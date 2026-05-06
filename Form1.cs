@@ -29,7 +29,7 @@ namespace ReVita
     {
         // ── Conexión compartida ───────────────────────────────────────────────────
         SqlConnection Conexion = new SqlConnection(
-            @"server=.\SQLEXPRESS;database=HOSPITAL;integrated security=true;");
+            @"server=.;database=HOSPITAL;integrated security=true;");
 
         // ── Variables para la animación del menú lateral ─────────────────────────
         private Timer timerMenuLateral;
@@ -751,17 +751,63 @@ namespace ReVita
                                        .FirstOrDefault() as DataGridView;
             if (dgvRef == null) return;
 
+            /**
+             * MODIFICACIÓN - Cada tabla con una llave foránea muestra 
+             * el valor cuando se despliega (en lugar del número - ID)
+             */
             try
             {
                 if (Conexion.State == ConnectionState.Closed) Conexion.Open();
-                var da = new SqlDataAdapter($"SELECT * FROM {nombreTabla}", Conexion);
+
+                // Variables para la consulta
+                string sqlSelect = "SELECT T.*";
+                string sqlFrom = $" FROM {nombreTabla} T";
+                string sqlJoins = "";
+
+                // Se recorren todos los campos de la tabla
+                foreach (string campo in tablasCampos[nombreTabla])
+                {
+                    // Si el campo es una llave foránea
+                    if (InferirTipoCampo(campo, nombreTabla) == TipoCampo.ID)
+                    {
+                        string tablaOrigen = TablaOrigenDeFK(campo);
+                        if (tablaOrigen != null)
+                        {
+                            string pkOrigen = tablasPK[tablaOrigen];
+                            string displayCol = tablasDisplayCol.ContainsKey(tablaOrigen) ? tablasDisplayCol[tablaOrigen] : pkOrigen;
+
+                            // Se agrega la columna al select
+                            sqlSelect += $", J_{tablaOrigen}.{displayCol} AS [{tablaOrigen}]";
+
+                            // Se agrega el join correspondiente
+                            sqlJoins += $" LEFT JOIN {tablaOrigen} J_{tablaOrigen} ON T.{campo} = J_{tablaOrigen}.{pkOrigen}";
+                        }
+                    }
+                }
+
+                string sql = sqlSelect + sqlFrom + sqlJoins;
+
+                var da = new SqlDataAdapter(sql, Conexion);
                 var dt = new DataTable();
                 da.Fill(dt);
                 dgvRef.DataSource = dt;
+
+                // Se ocultan las columnas con el número para dejar solo el nombre
+                foreach (string campo in tablasCampos[nombreTabla])
+                {
+                    if (InferirTipoCampo(campo, nombreTabla) == TipoCampo.ID && dgvRef.Columns.Contains(campo))
+                    {
+                        dgvRef.Columns[campo].Visible = false;
+                    }
+                }
             }
             catch (Exception ex) { MostrarError("cargar datos de " + nombreTabla, ex); }
             finally { if (Conexion.State == ConnectionState.Open) Conexion.Close(); }
+
         }
+
+
+
 
         /// <summary>Lee el valor actual del control asociado al campo.</summary>
         public object LeerValorCampo(Form FormModulo, string campo, string nombreTabla, TipoCampo tipo)
