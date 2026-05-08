@@ -245,3 +245,29 @@ C:\Users\Kalu_\Downloads\PROYECTO FUNDAMENTOS\REPOS - 12 PM\obj\Debug\ReVita.csp
 C:\Users\Kalu_\Downloads\PROYECTO FUNDAMENTOS\REPOS - 12 PM\obj\Debug\ReVita.csproj.Up2Date
 C:\Users\Kalu_\Downloads\PROYECTO FUNDAMENTOS\REPOS - 12 PM\obj\Debug\ReVita.exe
 C:\Users\Kalu_\Downloads\PROYECTO FUNDAMENTOS\REPOS - 12 PM\obj\Debug\ReVita.pdb
+C:\Users\nayro\Downloads\hsopital\bin\Debug\ReVita.exe.config
+C:\Users\nayro\Downloads\hsopital\bin\Debug\ReVita.exe
+C:\Users\nayro\Downloads\hsopital\bin\Debug\ReVita.pdb
+C:\Users\nayro\Downloads\hsopital\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\nayro\Downloads\hsopital\bin\Debug\itextsharp.dll
+C:\Users\nayro\Downloads\hsopital\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\nayro\Downloads\hsopital\bin\Debug\itextsharp.xml
+C:\Users\nayro\Downloads\hsopital\obj\Debug\ReVita.csproj.AssemblyReference.cache
+C:\Users\nayro\Downloads\hsopital\obj\Debug\ReVita.exe.config
+C:\Users\nayro\Downloads\hsopital\obj\Debug\ReVita.Form1.resources
+C:\Users\nayro\Downloads\hsopital\obj\Debug\ReVita.frmEmpleados.resources
+C:\Users\nayro\Downloads\hsopital\obj\Debug\ReVita.frmHorario.resources
+C:\Users\nayro\Downloads\hsopital\obj\Debug\ReVita.frmInterino.resources
+C:\Users\nayro\Downloads\hsopital\obj\Debug\ReVita.frmMedicos.resources
+C:\Users\nayro\Downloads\hsopital\obj\Debug\ReVita.frmPacientes.resources
+C:\Users\nayro\Downloads\hsopital\obj\Debug\ReVita.frmPersonal.resources
+C:\Users\nayro\Downloads\hsopital\obj\Debug\ReVita.frmSustitucion.resources
+C:\Users\nayro\Downloads\hsopital\obj\Debug\ReVita.frmSustituto.resources
+C:\Users\nayro\Downloads\hsopital\obj\Debug\ReVita.frmTitular.resources
+C:\Users\nayro\Downloads\hsopital\obj\Debug\ReVita.frmVacaciones.resources
+C:\Users\nayro\Downloads\hsopital\obj\Debug\ReVita.Properties.Resources.resources
+C:\Users\nayro\Downloads\hsopital\obj\Debug\ReVita.csproj.GenerateResource.cache
+C:\Users\nayro\Downloads\hsopital\obj\Debug\ReVita.csproj.CoreCompileInputs.cache
+C:\Users\nayro\Downloads\hsopital\obj\Debug\ReVita.csproj.Up2Date
+C:\Users\nayro\Downloads\hsopital\obj\Debug\ReVita.exe
+C:\Users\nayro\Downloads\hsopital\obj\Debug\ReVita.pdb

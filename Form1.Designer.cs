@@ -40,14 +40,14 @@
             // 
             this.mnuBarra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(111)))), ((int)(((byte)(94)))));
             this.mnuBarra.Dock = System.Windows.Forms.DockStyle.Left;
-            this.mnuBarra.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.mnuBarra.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.mnuBarra.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.iNICIOToolStripMenuItem});
             this.mnuBarra.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.mnuBarra.Location = new System.Drawing.Point(0, 0);
             this.mnuBarra.Name = "mnuBarra";
-            this.mnuBarra.Size = new System.Drawing.Size(140, 865);
+            this.mnuBarra.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
+            this.mnuBarra.Size = new System.Drawing.Size(137, 450);
             this.mnuBarra.TabIndex = 0;
             this.mnuBarra.Text = "menuStrip1";
             // 
@@ -64,14 +64,13 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(239)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(1600, 865);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.mnuBarra);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnuBarra;
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
             this.Text = "ReVita";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

@@ -1443,8 +1443,5 @@ namespace ReVita
             string primeraFecha = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy");
             lblFecha.Text = char.ToUpper(primeraFecha[0]) + primeraFecha.Substring(1);
         }
-
-
-
     }
 }
