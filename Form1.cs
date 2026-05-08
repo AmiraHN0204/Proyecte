@@ -14,7 +14,6 @@ using System.Windows.Forms;
 namespace ReVita
 {
     /// <summary>
-    /// PRUEBAAAAAAAAAAAAAa
     /// </summary>
     public enum TipoCampo
     {

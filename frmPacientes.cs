@@ -188,6 +188,62 @@ namespace ReVita
         // ── CONSULTA / FILTRAR ────────────────────────────────────────────────
         private void BtnConsulta_Click(object sender, EventArgs e)
         {
+            string termino = MostrarDialogoBusqueda("Buscar en Personal (Nombre, NSS, Población…)");
+            if (termino == null) return;   // canceló
+
+            var dgv = this.Controls.Find("dgv" + TABLA, true).FirstOrDefault() as DataGridView;
+            if (dgv?.DataSource is DataTable dt)
+            {
+                if (string.IsNullOrWhiteSpace(termino))
+                {
+                    dt.DefaultView.RowFilter = "";
+                }
+                else
+                {
+                    string t = termino.Replace("'", "''");
+                    dt.DefaultView.RowFilter =
+                        $"Nombre LIKE '%{t}%' OR NSS LIKE '%{t}%' OR " +
+                        $"Poblacion LIKE '%{t}%' OR Provincia LIKE '%{t}%'";
+                }
+            }
+        }
+        //Mini dialogo de busqueda
+        private string MostrarDialogoBusqueda(string instruccion)
+        {
+            using (Form dlg = new Form())
+            {
+                dlg.Text = "Consulta";
+                dlg.Size = new Size(380, 140);
+                dlg.StartPosition = FormStartPosition.CenterParent;
+                dlg.FormBorderStyle = FormBorderStyle.FixedDialog;
+                dlg.MaximizeBox = false; dlg.MinimizeBox = false;
+                dlg.BackColor = Color.FloralWhite;
+
+                Label lbl = new Label { Text = instruccion, Location = new Point(12, 14), AutoSize = true };
+                TextBox txt = new TextBox { Location = new Point(12, 38), Width = 340 };
+                Button btnOk = new Button
+                {
+                    Text = "Buscar",
+                    DialogResult = DialogResult.OK,
+                    Location = new Point(200, 68),
+                    Width = 80
+                };
+                Button btnClear = new Button
+                {
+                    Text = "Ver todos",
+                    DialogResult = DialogResult.No,
+                    Location = new Point(290, 68),
+                    Width = 70
+                };
+
+                dlg.Controls.AddRange(new Control[] { lbl, txt, btnOk, btnClear });
+                dlg.AcceptButton = btnOk;
+
+                DialogResult res = dlg.ShowDialog(this);
+                if (res == DialogResult.No) return "";          // mostrar todos
+                if (res == DialogResult.OK) return txt.Text;
+                return null;                                       // canceló
+            }
         }
 
         // ── LIMPIAR ───────────────────────────────────────────────────────────
