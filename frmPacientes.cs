@@ -188,7 +188,7 @@ namespace ReVita
         // ── CONSULTA / FILTRAR ────────────────────────────────────────────────
         private void BtnConsulta_Click(object sender, EventArgs e)
         {
-            string termino = MostrarDialogoBusqueda("Buscar en Personal (Nombre, NSS, Población…)");
+            string termino = MostrarDialogoBusqueda("Buscar en Paciente (Nombre, NSS, Telefono…)");
             if (termino == null) return;   // canceló
 
             var dgv = this.Controls.Find("dgv" + TABLA, true).FirstOrDefault() as DataGridView;
@@ -202,8 +202,8 @@ namespace ReVita
                 {
                     string t = termino.Replace("'", "''");
                     dt.DefaultView.RowFilter =
-                        $"Nombre LIKE '%{t}%' OR NSS LIKE '%{t}%' OR " +
-                        $"Poblacion LIKE '%{t}%' OR Provincia LIKE '%{t}%'";
+                        $"Nombre_Pac LIKE '%{t}%' OR NSS_Pac LIKE '%{t}%' OR " +
+                        $"Telefono_Pac LIKE '%{t}%'";
                 }
             }
         }
