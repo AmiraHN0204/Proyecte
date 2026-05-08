@@ -186,116 +186,28 @@ namespace ReVita
         // ── CONSULTA / FILTRAR ────────────────────────────────────────────────
         private void BtnConsulta_Click(object sender, EventArgs e)
         {
-            Panel pnlConsulta = new Panel();
-            pnlConsulta.Size = new Size(320, 180);
-            pnlConsulta.Location = new Point(
-                (this.ClientSize.Width - pnlConsulta.Width) / 2,
-                (this.ClientSize.Height - pnlConsulta.Height) / 2);
-            pnlConsulta.BorderStyle = BorderStyle.FixedSingle;
-            pnlConsulta.BackColor = Color.LightGray;
+            string termino = MostrarDialogoBusqueda("Buscar en Vacaciones (ID, Fecha inicio y fin, Estado)");
+            if (termino == null) return;   // canceló
 
-            System.Windows.Forms.Label lblConsulta = new System.Windows.Forms.Label();
-            lblConsulta.Text = "Seleccione un personal para consultar:";
-            lblConsulta.Location = new Point(10, 10);
-            lblConsulta.AutoSize = true;
-
-            System.Windows.Forms.ComboBox cmbConsultas = new System.Windows.Forms.ComboBox();
-            cmbConsultas.Location = new Point(10, 35);
-            cmbConsultas.Width = 290;
-            cmbConsultas.DropDownStyle = ComboBoxStyle.DropDownList;
-
-            System.Windows.Forms.Button btnEjecutarConsulta = new System.Windows.Forms.Button();
-            btnEjecutarConsulta.Text = "Consultar";
-            btnEjecutarConsulta.Location = new Point(10, pnlConsulta.Height - btnEjecutarConsulta.Height - 10);
-
-            System.Windows.Forms.Button btnCerrarConsulta = new System.Windows.Forms.Button();
-            btnCerrarConsulta.Text = "Cerrar";
-            btnCerrarConsulta.Location = new Point(
-                pnlConsulta.Width - btnCerrarConsulta.Width - 10,
-                pnlConsulta.Height - btnCerrarConsulta.Height - 10);
-            btnCerrarConsulta.Click += (s, args) => pnlConsulta.Dispose();
-
-            // Cargar "ID - Nombre" en el ComboBox
-            try
+            var dgv = this.Controls.Find("dgv" + TABLA, true).FirstOrDefault() as DataGridView;
+            if (dgv?.DataSource is DataTable dt)
             {
-                if (Conexion.State != ConnectionState.Open) Conexion.Open();
-
-                SqlCommand Comando = new SqlCommand("SELECT Personal_ID_Personal, Consultorio_Principal FROM Titular", Conexion);
-                SqlDataReader reader = Comando.ExecuteReader();
-
-                while (reader.Read())
+                if (string.IsNullOrWhiteSpace(termino))
                 {
-                    cmbConsultas.Items.Add($"{reader["Medico_ID_Medico"]} - {reader["Consultorio_Principal"]}");
+                    dt.DefaultView.RowFilter = "";
                 }
-                reader.Close();
+                else
+                {
+                    string t = termino.Replace("'", "''");
 
-                if (cmbConsultas.Items.Count > 0)
-                    cmbConsultas.SelectedIndex = 0;
+                    // Se convierte el id y las fechas en string para poder utilizar operador LIKE
+                    dt.DefaultView.RowFilter =
+                        $"CONVERT(ID_Vacaciones, 'System.String') LIKE '%{t}%' " +
+                        $"OR Estado LIKE '%{t}%' " +
+                        $"OR CONVERT(Fecha_Inicio, 'System.String') LIKE '%{t}%' " +
+                        $"OR CONVERT(Fecha_Fin, 'System.String') LIKE '%{t}%'";
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al cargar datos: {ex.Message}");
-                return;
-            }
-            finally
-            {
-                if (Conexion.State == ConnectionState.Open) Conexion.Close();
-            }
-
-            btnEjecutarConsulta.Click += (s, args) =>
-            {
-                if (cmbConsultas.SelectedItem == null)
-                {
-                    MessageBox.Show("Seleccione un médico titular para consultar.");
-                    return;
-                }
-
-                // Extraer solo el ID del texto "ID - Consultorio"
-                string IDSeleccionado = cmbConsultas.SelectedItem.ToString().Split('-')[0].Trim();
-
-                string Consulta = "SELECT * FROM Titular WHERE Medico_ID_Medico = @Medico_ID_Medico";
-                SqlCommand ComandoConsulta = new SqlCommand(Consulta, Conexion);
-                ComandoConsulta.Parameters.AddWithValue("@Medico_ID_Medico", IDSeleccionado);
-
-                try
-                {
-                    if (Conexion.State != ConnectionState.Open) Conexion.Open();
-                    SqlDataReader reader = ComandoConsulta.ExecuteReader();
-
-                    if (reader.Read())
-                    {
-                        foreach (string campo in FormularioPrincipal.ObtenerCampos(TABLA))
-                        {
-                            object valor = reader[campo];
-                            FormularioPrincipal.EscribirValorCampo(
-                                this, campo, TABLA,
-                                FormularioPrincipal.ObtenerTipo(campo, TABLA),
-                                valor);
-                        }
-                        pnlConsulta.Dispose();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se encontró el registro.");
-                    }
-                    reader.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error al ejecutar la consulta: {ex.Message}");
-                }
-                finally
-                {
-                    if (Conexion.State == ConnectionState.Open) Conexion.Close();
-                }
-            };
-
-            pnlConsulta.Controls.Add(lblConsulta);
-            pnlConsulta.Controls.Add(cmbConsultas);
-            pnlConsulta.Controls.Add(btnEjecutarConsulta);
-            pnlConsulta.Controls.Add(btnCerrarConsulta);
-            this.Controls.Add(pnlConsulta);
-            pnlConsulta.BringToFront();
         }
 
         // ── LIMPIAR ───────────────────────────────────────────────────────────
@@ -306,6 +218,45 @@ namespace ReVita
             if (dgv?.DataSource is DataTable dt) dt.DefaultView.RowFilter = "";
         }
 
-        
+        // ── Helper: mini-diálogo de búsqueda ─────────────────────────────────
+        private string MostrarDialogoBusqueda(string instruccion)
+        {
+            using (Form dlg = new Form())
+            {
+                dlg.Text = "Consulta";
+                dlg.Size = new Size(380, 140);
+                dlg.StartPosition = FormStartPosition.CenterParent;
+                dlg.FormBorderStyle = FormBorderStyle.FixedDialog;
+                dlg.MaximizeBox = false; dlg.MinimizeBox = false;
+                dlg.BackColor = Color.FloralWhite;
+
+                Label lbl = new Label { Text = instruccion, Location = new Point(12, 14), AutoSize = true };
+                TextBox txt = new TextBox { Location = new Point(12, 38), Width = 340 };
+                Button btnOk = new Button
+                {
+                    Text = "Buscar",
+                    DialogResult = DialogResult.OK,
+                    Location = new Point(200, 68),
+                    Width = 80
+                };
+                Button btnClear = new Button
+                {
+                    Text = "Ver todos",
+                    DialogResult = DialogResult.No,
+                    Location = new Point(290, 68),
+                    Width = 70
+                };
+
+                dlg.Controls.AddRange(new Control[] { lbl, txt, btnOk, btnClear });
+                dlg.AcceptButton = btnOk;
+
+                DialogResult res = dlg.ShowDialog(this);
+                if (res == DialogResult.No) return "";          // mostrar todos
+                if (res == DialogResult.OK) return txt.Text;
+                return null;                                       // canceló
+            }
+
+        }
+
     }
 }

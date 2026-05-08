@@ -163,9 +163,32 @@ namespace ReVita
             finally { if (Conexion.State == ConnectionState.Open) Conexion.Close(); }
         }
 
+
+
         // ── CONSULTA / FILTRAR ────────────────────────────────────────────────
         private void BtnConsulta_Click(object sender, EventArgs e)
         {
+            string termino = MostrarDialogoBusqueda("Buscar en Medicos (ID, Turno, Tipo)");
+            if (termino == null) return;   // canceló
+
+            var dgv = this.Controls.Find("dgv" + TABLA, true).FirstOrDefault() as DataGridView;
+            if (dgv?.DataSource is DataTable dt)
+            {
+                if (string.IsNullOrWhiteSpace(termino))
+                {
+                    dt.DefaultView.RowFilter = "";
+                }
+                else
+                {
+                    string t = termino.Replace("'", "''");
+
+                    // Se convierte el id y cedula a string para poder utilizar el operador LIKE
+                    dt.DefaultView.RowFilter =
+                        $"CONVERT(ID_Medico, 'System.String') LIKE '%{t}%' " +
+                        $"OR Cedula LIKE '%{t}%' " +
+                        $"OR CONVERT(Personal_ID_Personal, 'System.String') LIKE '%{t}%'";
+                }
+            }
         }
 
         // ── LIMPIAR ───────────────────────────────────────────────────────────
@@ -176,6 +199,45 @@ namespace ReVita
             if (dgv?.DataSource is DataTable dt) dt.DefaultView.RowFilter = "";
         }
 
-        
+        // ── Helper: mini-diálogo de búsqueda ─────────────────────────────────
+        private string MostrarDialogoBusqueda(string instruccion)
+        {
+            using (Form dlg = new Form())
+            {
+                dlg.Text = "Consulta";
+                dlg.Size = new Size(380, 140);
+                dlg.StartPosition = FormStartPosition.CenterParent;
+                dlg.FormBorderStyle = FormBorderStyle.FixedDialog;
+                dlg.MaximizeBox = false; dlg.MinimizeBox = false;
+                dlg.BackColor = Color.FloralWhite;
+
+                Label lbl = new Label { Text = instruccion, Location = new Point(12, 14), AutoSize = true };
+                TextBox txt = new TextBox { Location = new Point(12, 38), Width = 340 };
+                Button btnOk = new Button
+                {
+                    Text = "Buscar",
+                    DialogResult = DialogResult.OK,
+                    Location = new Point(200, 68),
+                    Width = 80
+                };
+                Button btnClear = new Button
+                {
+                    Text = "Ver todos",
+                    DialogResult = DialogResult.No,
+                    Location = new Point(290, 68),
+                    Width = 70
+                };
+
+                dlg.Controls.AddRange(new Control[] { lbl, txt, btnOk, btnClear });
+                dlg.AcceptButton = btnOk;
+
+                DialogResult res = dlg.ShowDialog(this);
+                if (res == DialogResult.No) return "";          // mostrar todos
+                if (res == DialogResult.OK) return txt.Text;
+                return null;                                       // canceló
+            }
+
+        }
+
     }
 }
