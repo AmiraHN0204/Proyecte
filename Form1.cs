@@ -31,7 +31,7 @@ namespace ReVita
     {
         // ── Conexión compartida ───────────────────────────────────────────────────
         SqlConnection Conexion = new SqlConnection(
-            @"server=.;database=HOSPITAL;integrated security=true;");
+            @"server=.\SQLEXPRESS;database=HOSPITAL;integrated security=true;");
 
         // ── Variables para la animación del menú lateral ─────────────────────────
         private Timer timerMenuLateral;
