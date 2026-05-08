@@ -1102,6 +1102,11 @@ namespace ReVita
             DibujarLogoGranFormato(pnlInicio, 930, 30);
             DibujarCarruselInstalaciones(pnlInicio, 880, 290);
 
+            // --- DIBUJAR TARJETAS DE REGISTROS ---
+            DibujarTarjetasResumen(pnlInicio, 25, 140);
+
+            // --- DIBUJAR WIDGET DE RELOJ ---
+            DibujarWidgetReloj(pnlInicio, 25, 420);
         }
 
         // Método para dibujar la sección de "Últimos Pacientes Registrados" con un DataGridView estilizado.
@@ -1279,5 +1284,165 @@ namespace ReVita
                 timerCarrusel.Start();
             }
         }
+
+
+
+        // ════════════════════════════════════════════════════════════════════════════
+        //  DISEÑO: Tarjetas con cantidad de registros
+        // ════════════════════════════════════════════════════════════════════════════
+        private void DibujarTarjetasResumen(Panel contenedor, int startX, int startY)
+        {
+            // Diccionario con las tablas e icono representativo para cada una
+            var datosTablas = new Dictionary<string, string>
+    {
+        { "Personal", "👥" }, { "Vacaciones", "🌴" }, { "Empleado", "🧑‍💼" },
+        { "Medico", "🩺" }, { "Titular", "🎖️" }, { "Interino", "⏳" },
+        { "Sustituto", "🔄" }, { "Sustitucion", "📋" }, { "Horario", "🕒" },
+        { "Paciente", "🏥" }
+    };
+
+            int cardWidth = 120;
+            int cardHeight = 120;
+            int gapX = 20;   // Espacio horizontal
+            int gapY = 20;   // Espacio vertical
+            int columnas = 5; // Cantidad de tarjetas por fila 
+
+            // Colores 
+            Color colorIcono = ColorTranslator.FromHtml("#4E9C81");
+            Color colorTexto = ColorTranslator.FromHtml("#2F6F5E");
+
+            int i = 0;
+            foreach (var item in datosTablas)
+            {
+                string tabla = item.Key;
+                string icono = item.Value;
+
+                int fila = i / columnas;
+                int col = i % columnas;
+
+                int x = startX + col * (cardWidth + gapX);
+                int y = startY + fila * (cardHeight + gapY);
+
+                // Se crea la tarjeta
+                Panel pnlCard = new Panel
+                {
+                    Location = new Point(x, y),
+                    Size = new Size(cardWidth, cardHeight),
+                    BackColor = Color.White
+                };
+
+                // Se consulta la cantidad en la BD
+                int cantidad = 0;
+                try
+                {
+                    if (Conexion.State == ConnectionState.Closed) Conexion.Open();
+                    using (SqlCommand cmd = new SqlCommand($"SELECT COUNT(*) FROM {tabla}", Conexion))
+                    {
+                        cantidad = Convert.ToInt32(cmd.ExecuteScalar());
+                    }
+                }
+                catch { /* Se ignora si hay error de conexión o la tabla no existe */ }
+                finally { if (Conexion.State == ConnectionState.Open) Conexion.Close(); }
+
+                // Se crea la etiqueta para el icono
+                Label lblIcono = new Label
+                {
+                    Text = icono,
+                    Font = new Font("Segoe UI Emoji", 24, FontStyle.Regular),
+                    ForeColor = colorIcono,
+                    Dock = DockStyle.Top,
+                    Height = 50,
+                    TextAlign = ContentAlignment.BottomCenter
+                };
+
+                // Se crea la etiqueta para la cantidad
+                Label lblNumero = new Label
+                {
+                    Text = cantidad.ToString(),
+                    Font = new Font("Segoe UI", 16, FontStyle.Bold),
+                    ForeColor = colorTexto,
+                    Dock = DockStyle.Top,
+                    Height = 30,
+                    TextAlign = ContentAlignment.MiddleCenter
+                };
+
+                // Se crea la etiqueta para el nombre de la tabla
+                Label lblNombre = new Label
+                {
+                    Text = tabla,
+                    Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                    ForeColor = Color.Gray,
+                    Dock = DockStyle.Bottom,
+                    Height = 30,
+                    TextAlign = ContentAlignment.TopCenter
+                };
+
+                // Se agregan las etiquetas al panel
+                pnlCard.Controls.Add(lblNombre);
+                pnlCard.Controls.Add(lblNumero);
+                pnlCard.Controls.Add(lblIcono);
+
+                // Se agregan al contenedor
+                contenedor.Controls.Add(pnlCard);
+                i++;
+            }
+        }
+
+
+        // ════════════════════════════════════════════════════════════════════════════
+        //  DISEÑO: Widget de reloj con fecha
+        // ════════════════════════════════════════════════════════════════════════════
+        private void DibujarWidgetReloj(Panel contenedor, int startX, int startY)
+        {
+            // Se crea el panel que contendrá el reloj
+            Panel pnlReloj = new Panel
+            {
+                Location = new Point(startX, startY),
+                Size = new Size(680, 130),
+                BackColor = Color.White
+            };
+
+            // Se crea la etiqueta para la hora
+            Label lblHora = new Label
+            {
+                Font = new Font("Segoe UI", 42, FontStyle.Bold),
+                ForeColor = ColorTranslator.FromHtml("#2F6F5E"),
+                AutoSize = true,
+                Location = new Point(20, 10)
+            };
+
+            // Se crea la etiqueta para la fecha
+            Label lblFecha = new Label
+            {
+                Font = new Font("Segoe UI", 12, FontStyle.Regular),
+                ForeColor = Color.Gray,
+                AutoSize = true,
+                Location = new Point(30, 85)
+            };
+
+            // Se añaden al panel
+            pnlReloj.Controls.Add(lblHora);
+            pnlReloj.Controls.Add(lblFecha);
+            contenedor.Controls.Add(pnlReloj);
+
+            // Se crea el timer para que se actualice el reloj a cada segundo
+            Timer timerReloj = new Timer();
+            timerReloj.Interval = 1000;
+            timerReloj.Tick += (s, e) =>
+            {
+                lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
+                string fecha = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy");
+                lblFecha.Text = char.ToUpper(fecha[0]) + fecha.Substring(1);
+            };
+            timerReloj.Start();
+
+            // Se forza la primera actualización
+            lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
+            string primeraFecha = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy");
+            lblFecha.Text = char.ToUpper(primeraFecha[0]) + primeraFecha.Substring(1);
+        }
+
+
+
     }
 }
